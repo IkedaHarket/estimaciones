@@ -36,8 +36,6 @@ const calcCurvaAjusteLineal = () => {
     const b = ((sumaY) - (a * sumaX )) / matriz.length
     const coeficienteCorreccion =  ((matriz.length * sumaXY) - (sumaX * sumaY)) / Math.sqrt( ((matriz.length * sumaXX) - (sumaX * sumaX)) * ((matriz.length * sumaYY) - (sumaY * sumaY)) )
 
-    console.log(a,b);
-    console.log(coeficienteCorreccion);
     d.getElementById('respuestas').classList.remove('d-none')
     d.getElementById('txtCurvaAjusteLineal').textContent = `${a.toFixed(4)}x + (${b.toFixed(4)})`
     d.getElementById('txtCoefCorreccion').textContent = coeficienteCorreccion.toFixed(4)
@@ -45,7 +43,6 @@ const calcCurvaAjusteLineal = () => {
 
     matriz.map(dato => curvaAjusteLineal.push( [ dato[0],  ((a*dato[0]) + b)   ] ) )
 
-    console.log(curvaAjusteLineal);
     const curvaAjusteLinealX = curvaAjusteLineal.map(point => point[0] )
     const curvaAjusteLinealY = curvaAjusteLineal.map(point => point[1] )
     const myChart = new Chart(ctx, {
@@ -68,9 +65,52 @@ const calcCurvaAjusteLineal = () => {
             }
         }
     });
+    printTable({sumaX, sumaY, sumaXX, sumaYY, sumaXY});
 }
 
+function printTable({sumaX, sumaY, sumaXX, sumaYY, sumaXY}){
+    const $table = d.getElementById('respuestasTabla')
+    const $tableBody = d.getElementById('respuestasTablaBody');
+    matriz.map(dato => {
+        const row = d.createElement('tr')
+        dato.map(el => {
+            const td = d.createElement('td');
+            td.innerHTML = redondearDecimales(el,4)
+            row.appendChild(td);
+        })
+        $tableBody.appendChild(row);
+    }) 
+    const row = d.createElement('tr')
+    const tdX = d.createElement('td')
+    const tdY = d.createElement('td')
+    const tdXX = d.createElement('td')
+    const tdYY = d.createElement('td')
+    const tdXY = d.createElement('td')
+    
+    tdX.innerHTML = redondearDecimales(sumaX,4)
+    tdY.innerHTML = redondearDecimales(sumaY,4)
+    tdXX.innerHTML = redondearDecimales(sumaXX,4)
+    tdYY.innerHTML = redondearDecimales(sumaYY,4)
+    tdXY.innerHTML = redondearDecimales(sumaXY,4)
 
+    row.appendChild(tdX);
+    row.appendChild(tdY);
+    row.appendChild(tdXX);
+    row.appendChild(tdYY);
+    row.appendChild(tdXY);
+    
+    row.classList.add('table-dark')
+
+    $tableBody.appendChild(row);
+}
+function redondearDecimales(numero, decimales) {
+    numeroRegexp = new RegExp('\\d\\.(\\d){' + decimales + ',}');   // Expresion regular para numeros con un cierto numero de decimales o mas
+    if (numeroRegexp.test(numero)) {         // Ya que el numero tiene el numero de decimales requeridos o mas, se realiza el redondeo
+        return Number(numero.toFixed(decimales));
+    } else {
+        return Number(numero.toFixed(decimales)) === 0 ? 0 : numero;  // En valores muy bajos, se comprueba si el numero es 0 (con el redondeo deseado), si no lo es se devuelve el numero otra vez.
+    }
+}
 
 $addPoint.addEventListener('click',()=> {
     
