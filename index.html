@@ -40,7 +40,7 @@
                     </div>
                 </form>
                 <div class="row justify-content-center">
-                    <button type="button" class="btn btn-outline-primary me-3 col-8" id="btnCalc">
+                    <button type="button" class="btn btn-outline-primary me-3 col-6" id="btnCalc">
                         Calcular
                     </button>
                     <button type="button" class="btn btn-outline-primary col-2 " id="addPoint" title="+">
@@ -54,6 +54,12 @@
         </section>
     </section>
     <section class="container mt-4 d-none" id="respuestas">
+        
+        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#formulasModal">
+            Ver formulas
+        </button>
+        <p>a :  <span id="txtA"></span></p>
+        <p>b :  <span id="txtB"></span></p>
         <p>Curva Ajuste Lineal (ý) :  <span id="txtCurvaAjusteLineal"></span></p>
         <p>Coeficiente Correccion :  <span id="txtCoefCorreccion"></span></p>
         <p>Coeficiente de determinacion :  <span id="txtCoefDeterminacion"></span></p>
@@ -72,6 +78,21 @@
             </tbody>
         </table>
     </section>
+
+    
+    <div class="modal fade" id="formulasModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Formulas</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="./assets/formulas.jpeg" alt="formulas">
+            </div>
+          </div>
+        </div>
+      </div>
     <footer>
 
     </footer>

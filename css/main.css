@@ -2,11 +2,11 @@ input{
     outline: none;
     border: 1px solid #198754;
     height: 35px;
-    border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
+    border-radius: 5px;
 }
 .width-100{
     width: 100px;

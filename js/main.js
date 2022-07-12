@@ -37,6 +37,8 @@ const calcCurvaAjusteLineal = () => {
     const coeficienteCorreccion =  ((matriz.length * sumaXY) - (sumaX * sumaY)) / Math.sqrt( ((matriz.length * sumaXX) - (sumaX * sumaX)) * ((matriz.length * sumaYY) - (sumaY * sumaY)) )
 
     d.getElementById('respuestas').classList.remove('d-none')
+    d.getElementById('txtA').textContent = a
+    d.getElementById('txtB').textContent = b
     d.getElementById('txtCurvaAjusteLineal').textContent = `${a.toFixed(4)}x + (${b.toFixed(4)})`
     d.getElementById('txtCoefCorreccion').textContent = coeficienteCorreccion.toFixed(4)
     d.getElementById('txtCoefDeterminacion').textContent = `${(coeficienteCorreccion*coeficienteCorreccion * 100).toFixed(4)} %`
