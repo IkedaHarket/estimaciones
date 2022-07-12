@@ -49,7 +49,7 @@
                 </div>
             </aside>
             <aside class="col-12 col-md-6">
-                <canvas id="myChart" width="400" height="400"></canvas>
+                <canvas id="myChart" width="400" height="200"></canvas>
             </aside>
         </section>
     </section>
@@ -57,6 +57,20 @@
         <p>Curva Ajuste Lineal (ý) :  <span id="txtCurvaAjusteLineal"></span></p>
         <p>Coeficiente Correccion :  <span id="txtCoefCorreccion"></span></p>
         <p>Coeficiente de determinacion :  <span id="txtCoefDeterminacion"></span></p>
+        <table class="table mb-5" id="respuestasTabla">
+            <thead>
+                <tr>
+                    <th scope="col">x</th>
+                    <th scope="col">y</th>
+                    <th scope="col">x * x</th>
+                    <th scope="col">y * y</th>
+                    <th scope="col">x * y</th>
+                </tr>
+            </thead>
+            <tbody id="respuestasTablaBody">
+
+            </tbody>
+        </table>
     </section>
     <footer>
 
